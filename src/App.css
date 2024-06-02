@@ -1,0 +1,48 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 50px;
+  margin-left: 33%;
+
+}
+
+ul li {
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 5px;
+}
+
+.addedTask {
+
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+  color: rgb(201, 178, 190);
+}
+
+input {
+  border: none;
+  width: 99%;
+  padding: 5px;
+}
+
+i {
+  cursor: pointer;
+  color: rgb(201, 178, 190);
+  display: flex;
+}
+
+.li-final {
+  background: #fff;
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.15),
+    0 10px 0 -5px #eee,
+    0 10px 1px -4px rgba(0, 0, 0, 0.15),
+    0 20px 0 -10px #eee,
+    0 20px 1px -9px rgba(0, 0, 0, 0.15);
+  margin-bottom: 5px; 
+  padding: 10px; 
+}
