@@ -10,9 +10,11 @@ const App	 = () => {
 
   const [showX, setShowX] = useState(false)
 
-  const notifyTaskAdded = () => toast.success('Added Task');
-  const notifyTaskEmpty = () => toast.error('you must add a task');
-  const notifyTaskDeleted = () => toast.error ("Deleted task")
+  const notifyUserCreated = () => toast.success('Success creating user')
+  const notifyTaskAdded = () => toast.success('Task has been added');
+  const notifyTaskDeleted = () => toast.error ('Task has been deleted')
+  const notifyUserDeleted = () => toast.error ('User was deleted')
+
 
   const createUser = async () => {
     try {
@@ -24,7 +26,7 @@ const App	 = () => {
       }
       const data = await response.json();
       console.log('User created:', data);
-      // notifyUserCreated();
+      notifyUserCreated();
     } catch (error) {
       console.error('Error creating user:', error);
     }
@@ -33,6 +35,7 @@ const App	 = () => {
   useEffect (() =>{
     getTasks()
   }, [])
+
   const getTasks = async () => {
     try {
       const response = await fetch('https://playground.4geeks.com/todo/users/NelsonV', {
@@ -43,7 +46,6 @@ const App	 = () => {
       }
       const data = await response.json();
       setTaskList(data.todos);
-      // notifyUserCreated();
     } catch (error) {
       console.error('Error al traer las tareas:', error);
     }
@@ -60,6 +62,7 @@ const App	 = () => {
         } else {
           console.error('Error deleting user:', response.statusText);
         }
+        notifyUserDeleted ();
       })
       .catch((error) => console.error('Error deleting user:', error));
   };
@@ -81,7 +84,8 @@ const App	 = () => {
       .then((data) => {
         console.log(data);
         setTaskList([...taskList, data]);
-setNewTask('');
+        setNewTask('');
+        notifyTaskAdded ();
       })
       .catch((error) => console.error('Error creating task:', error));
     }
@@ -98,6 +102,7 @@ setNewTask('');
       } else {
         console.error('Error deleting task:', response.statusText);
       }
+      notifyTaskDeleted ();
     })
     .catch((error) => console.error('Error deleting task:', error));
   }
